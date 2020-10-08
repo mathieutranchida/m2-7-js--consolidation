@@ -63,8 +63,19 @@ const favoriteDessertsGroupB = {
 function groupByValue(obj) {
   // do something
   let newList = {};
+
+  Object.values(obj).forEach((dessert, person) => {
+    if (newList[dessert] === undefined) {
+      newList[dessert] = [];
+      newList[dessert].push(Object.keys(obj)[person]);
+    } else {
+      newList[dessert].push(Object.keys(obj)[person]);
+    }
+  });
+  return newList;
 }
 
+console.log(groupByValue(favoriteDessertsGroupB));
 // Verification via console.log()
 console.log("Group A", groupByValue(favoriteDessertsGroupA));
 console.log("Group B", groupByValue(favoriteDessertsGroupB));
