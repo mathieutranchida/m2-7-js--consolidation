@@ -62,6 +62,7 @@ const favoriteDessertsGroupB = {
 
 function groupByValue(obj) {
   // do something
+  let newList = {};
 }
 
 // Verification via console.log()

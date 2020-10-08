@@ -82,9 +82,57 @@ const inputData = {
 
 function transformData(data) {
   // Your code here
+  function superpowers(superpower1, superpower2) {
+    let newArr = [];
+    if (superpower1 !== null) {
+      newArr.push(superpower1);
+    }
+    if (superpower2 !== null) {
+      newArr.push(superpower2);
+    }
+    return newArr;
+  }
+
+  let result = {
+    name: data.name,
+    age: data.age,
+    status: data.status,
+    address: {
+      streetAddress: data.address1,
+      city: data.addressCity,
+      state: data.addressState,
+      country: data.addressCountry,
+    },
+    superpowers: superpowers(data.superpower1, data.superpower2),
+
+    relationships: [
+      {
+        type: "mother",
+        name: data.motherName,
+        age: data.motherAge,
+        status: data.motherStatus,
+        superpowers: superpowers(
+          data.motherSuperpower1,
+          data.motherSuperpower2
+        ),
+      },
+      {
+        type: "girlfriend",
+        name: data.girlfriendName,
+        age: data.girlfriendAge,
+        status: data.girlfriendStatus,
+        superpowers: superpowers(
+          data.girlfriendSuperpower1,
+          data.girlfriendSuperpower2
+        ),
+      },
+    ],
+  };
+  return result;
 }
 
 // Use a console.log to verify
+console.log(transformData(inputData));
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy
 // to see what it looks like, and debug any problems.
 console.log(JSON.stringify(transformData(inputData), null, 2));

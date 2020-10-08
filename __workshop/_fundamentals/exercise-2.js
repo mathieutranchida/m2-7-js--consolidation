@@ -54,8 +54,26 @@ const favoriteDessertsGroupB = {
 
 function sortByPopularity(obj) {
   // Write code
+  let dessertList = {};
+  Object.values(obj).forEach((element) => {
+    if (dessertList[element] === undefined) {
+      dessertList[element] = 1;
+    } else {
+      dessertList[element] = dessertList[element] + 1;
+    }
+  });
+  console.log(dessertList);
+  let dessertRanking = Object.keys(dessertList).sort((a, b) => {
+    let countA = dessertList[a];
+    let countB = dessertList[b];
+    if (countA < countB) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  return dessertRanking;
 }
-
 // Verification via console.log()
 console.log(
   "Popular desserts in Group A:",
